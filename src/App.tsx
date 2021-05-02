@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import { TodayRoaster } from "./modules/todayRoaster/todayRoaster";
 
-import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 
 function App() {
   return (

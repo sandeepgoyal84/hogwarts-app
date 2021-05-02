@@ -1,6 +1,6 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
-import StudentRoasterReducer from "src/components/studentRoaster/studentRoasterSlice";
-import TeacherRoasterReducer from "src/components/teacherRoaster/teacherRoasterSlice";
+import StudentRoasterReducer from "src/modules/studentRoaster/studentRoasterSlice";
+import TeacherRoasterReducer from "src/modules/teacherRoaster/teacherRoasterSlice";
 import createSagaMiddleware from "redux-saga";
 import rootSaga from "./sagas";
 

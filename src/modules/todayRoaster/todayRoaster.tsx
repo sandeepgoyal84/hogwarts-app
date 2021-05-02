@@ -1,6 +1,6 @@
 // import React, { useState } from "react";
-import StudentsRoaster from "src/components/studentRoaster/studentRoaster";
-import TeacherRoaster from "src/components/teacherRoaster/teacherRoaster";
+import StudentsRoaster from "src/modules/studentRoaster/studentRoaster";
+import TeacherRoaster from "src/modules/teacherRoaster/teacherRoaster";
 import styles from "./todayRoaster.module.css";
 
 export function TodayRoaster() {

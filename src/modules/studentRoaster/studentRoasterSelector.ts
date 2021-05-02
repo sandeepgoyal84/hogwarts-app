@@ -1,6 +1,6 @@
 import { RootState } from "src/app/store";
 import { Student } from "./type";
-import * as TeacherSelector from "src/components/teacherRoaster/teacherRoasterSelector";
+import * as TeacherSelector from "src/modules/teacherRoaster/teacherRoasterSelector";
 import * as  Queries from './queries';
 
 export const selectStudents = (state: RootState): ReadonlyArray<Student> =>{

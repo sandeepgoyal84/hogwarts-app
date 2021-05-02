@@ -1,10 +1,9 @@
 import React, { useEffect } from "react";
-import ThreeColumnForm from "src/blocks/threeColumnForm/threeColumnForm";
-// import { Student } from "./type";
 import ThreeColumnFormRowTy from "src/blocks/threeColumnFormRow/type";
 import { useAppSelector, useAppDispatch } from "src/app/hooks";
 import * as selector from "./studentRoasterSelector";
 import * as actions from "./studentRoasterSagaActions";
+import StudentSubjectChart from "src/components/studentSubjectChart/studentSubjectChart";
 
 const StudentRoaster = () => {
 
@@ -22,13 +21,13 @@ const StudentRoaster = () => {
   }, [dispatch]);
 
   return (
-    <ThreeColumnForm
+    <StudentSubjectChart
       title="Student Roaster"
       col1Header="Name"
       col2Header="Subject"
       col3Header="Assigned Teacher"
       rowData={formRows}
-    ></ThreeColumnForm>
+    ></StudentSubjectChart>
   );
 };
 export default StudentRoaster;

@@ -1,9 +1,9 @@
 import * as selectors from "./studentRoasterSelector";
 import { StudentRoasterStateSlice } from "./studentRoasterSlice";
-import { TeacherRoasterStateSlice } from "src/components/teacherRoaster/teacherRoasterSlice";
+import { TeacherRoasterStateSlice } from "src/modules/teacherRoaster/teacherRoasterSlice";
 import dummyData from "./mockData.json";
-import { Teacher } from "src/components/teacherRoaster/type";
-import teacherDummyData from "src/components/teacherRoaster/mockData.json";
+import { Teacher } from "src/modules/teacherRoaster/type";
+import teacherDummyData from "src/modules/teacherRoaster/mockData.json";
 import { Student } from "./type";
 import { RootState } from "src/app/store";
 

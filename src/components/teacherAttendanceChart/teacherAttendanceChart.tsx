@@ -1,33 +1,21 @@
-import React, { useEffect } from "react";
 import Label from "src/atoms/label/label";
 import Dropdown from "src/blocks/dropdown/dropdown";
-import { useAppSelector, useAppDispatch } from "src/app/hooks";
-import * as selector from "./teacherRoasterSelector";
-import * as actions from "./teacherRoasterSagaActions";
-import { update } from "./teacherRoasterSlice";
 import Heading from "src/atoms/heading/heading";
+type Props = {
+  callback: (id: string, val: string) => void;
+  attendanceData: {
+    name: string;
+    subject?: string | null;
+    designation?: string;
+    headName: string;
+    level: number;
+    isPresent: boolean;
+  }[];
+  getOptions: { key: string; value: string }[];
+};
 
-const TeacherRoaster = () => {
-  const getOptions = () => [
-    { key: "Present", value: "Present" },
-    { key: "Absent", value: "Absent" },
-  ];
-
-  const attendanceData = useAppSelector(selector.selectTeachers);
-
-  const dispatch = useAppDispatch();
-  const callback = (id: string, val: string) => {
-    dispatch(
-      update({
-        name: id,
-        isPresent: val === "Present" ? true : false,
-      })
-    );
-  };
-
-  useEffect(() => {
-    dispatch(actions.fetchTeacherRoaster());
-  }, [dispatch]);
+const TeacherAttendanceChart = (props: Props) => {
+  const { callback, attendanceData, getOptions } = props;
 
   return (
     <div
@@ -67,7 +55,7 @@ const TeacherRoaster = () => {
           <div style={{ flexBasis: "50%" }}>
             <Dropdown
               identifier={field.name}
-              optionList={getOptions()}
+              optionList={getOptions}
               selectedItem={field.isPresent ? "Present" : "Absent"}
               callback={callback}
             ></Dropdown>
@@ -77,4 +65,4 @@ const TeacherRoaster = () => {
     </div>
   );
 };
-export default TeacherRoaster;
+export default TeacherAttendanceChart;
