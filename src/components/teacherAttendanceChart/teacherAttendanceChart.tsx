@@ -1,5 +1,5 @@
 import Label from "src/atoms/label/label";
-import Dropdown from "src/blocks/dropdown/dropdown";
+import Dropdown from "src/atoms/dropdown/dropdown";
 import Heading from "src/atoms/heading/heading";
 type Props = {
   callback: (id: string, val: string) => void;
@@ -58,6 +58,7 @@ const TeacherAttendanceChart = (props: Props) => {
               optionList={getOptions}
               selectedItem={field.isPresent ? "Present" : "Absent"}
               callback={callback}
+              data-test-id={"ddw_" + field.name}
             ></Dropdown>
           </div>
         </div>

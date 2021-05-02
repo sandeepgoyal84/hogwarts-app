@@ -5,6 +5,7 @@ const Dropdown = (props: {
   selectedItem: string;
   optionList: ReadonlyArray<{ key: string; value: string }>;
   callback: (identifier: string, value: string) => void;
+  "data-test-id"?: string;
 }) => {
   const { selectedItem, optionList, identifier, callback } = props;
   const [selectedValue, setSelectedValue] = useState(selectedItem);
@@ -17,6 +18,7 @@ const Dropdown = (props: {
     <select
       name="select" defaultValue={selectedValue}
       onChange={(event) => handleSelectedValueChange(event.target.value)}
+      data-test-id={props["data-test-id"]}
     >
       {optionList.map((n) => {
         return (

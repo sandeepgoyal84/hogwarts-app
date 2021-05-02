@@ -26,7 +26,7 @@ const ThreeColumnFormRow = (props: ThreeColumnFormRowTy) => {
       <div
         style={{ flexBasis: "30%", fontWeight: isHeader ? "bolder" : "normal" }}
       >
-        <Label>{col3Value}</Label>
+        <Label data-test-id={"lbl_Col3value_"+ col1Value}>{col3Value}</Label>
       </div>
     </div>
   );
