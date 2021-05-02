@@ -1,0 +1,21 @@
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    background-color: rgb(255, 255, 255);
+    margin-bottom: 3px;
+  }
+  
+  .wrapper>div {
+    flex: 1;
+    padding: 0.5em; /* add some padding ?*/
+    text-align: center;
+    border-right: 1px solid rgb(0, 0, 0);
+  }
+  
+  .wrapper div:last-child {
+    border: none; /* remove border ? */
+  }
+  
