@@ -26,6 +26,28 @@
   color: rgb(112, 76, 182);
 }
 
+#menu-outer {
+	height: 84px;
+	background: #d67171;
+}
+
+.table {
+	display: table;   /* Allow the centering to work */
+	margin: 0 auto;
+}
+
+ul#horizontal-list {
+	min-width: 696px;
+	list-style: none;
+	padding-top: 20px;
+	}
+	ul#horizontal-list li {
+		display: inline;
+    padding: 0 40px;
+    font-size: large;
+    font-weight: 800;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	}
 @keyframes App-logo-float {
   0% {
     transform: translateY(0);

@@ -1,13 +1,19 @@
-import { call, put, all, takeEvery } from "redux-saga/effects";
+import { call, put, all, takeEvery, select } from "redux-saga/effects";
 import * as slice from "./studentRoasterSlice";
 import * as Api from "./api";
 import { Student } from "./type";
+import * as selectors from "./studentRoasterSelector";
 
 export function* fetchStudentRoasterSaga() {
+  const students: ReadonlyArray<Student> = yield select(
+    selectors.selectStudents
+  );
+  if (students && students.length > 0) {
+    return;
+  }
   // set status pending in state
   yield put(slice.pending());
   try {
-
     // trigger fetch api call to get student records
     const result: {
       response: ReadonlyArray<Student>;

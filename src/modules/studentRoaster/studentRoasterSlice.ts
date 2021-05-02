@@ -18,7 +18,7 @@ export const studentRoasterSlice = createSlice({
       action: PayloadAction<{ students: ReadonlyArray<Student> }>
     ) => {
       state.status = "success";
-      state.students = state.students.concat(action.payload.students);
+      state.students = action.payload.students;
     },
     pending: (state: StudentRoasterStateSlice) => {
       state.status = "pending";
