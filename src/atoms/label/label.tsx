@@ -2,11 +2,12 @@ import * as React from "react";
 
 type Props = Readonly<{
   children?: React.ReactNode;
-  "data-test-id"?: string;
+  "data-testid"?: string;
 }>;
 
-function Label({ children, "data-test-id": dataTestId }: Props) {
-  return <span data-test-id={dataTestId}>{children}</span>;
-}
+const Label = (props: Props) => {
+  const { children } = props;
+  return <span data-testid={props["data-testid"]}>{children}</span>;
+};
 
 export default Label;

@@ -1,16 +1,10 @@
 import Label from "src/atoms/label/label";
 import Dropdown from "src/atoms/dropdown/dropdown";
 import Heading from "src/atoms/heading/heading";
+import { Teacher } from "src/types";
 type Props = {
   callback: (id: string, val: string) => void;
-  attendanceData: {
-    name: string;
-    subject?: string | null;
-    designation?: string;
-    headName: string;
-    level: number;
-    isPresent: boolean;
-  }[];
+  attendanceData: Teacher[];
   getOptions: { key: string; value: string }[];
 };
 
@@ -25,7 +19,9 @@ const TeacherAttendanceChart = (props: Props) => {
         flexGrow: 1,
       }}
     >
-      <Heading type="secondary">Teacher Roaster</Heading>
+      <Heading data-testid="tac_lbl_heading" type="secondary">
+        Teacher Roaster
+      </Heading>
       <div
         style={{
           margin: "10px",
@@ -50,7 +46,7 @@ const TeacherAttendanceChart = (props: Props) => {
           key={field.name}
         >
           <div style={{ flexBasis: "50%" }}>
-            <Label>{field.name}</Label>
+            <Label data-testid="tac_lbl_teacher_name">{field.name}</Label>
           </div>
           <div style={{ flexBasis: "50%" }}>
             <Dropdown
@@ -58,7 +54,7 @@ const TeacherAttendanceChart = (props: Props) => {
               optionList={getOptions}
               selectedItem={field.isPresent ? "Present" : "Absent"}
               callback={callback}
-              data-test-id={"ddw_" + field.name}
+              data-testid="tac_ddw_attendance_status"
             ></Dropdown>
           </div>
         </div>

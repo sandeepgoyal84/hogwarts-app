@@ -1,6 +1,6 @@
 import * as React from "react";
 import ThreeColumnFormRow from "../threeColumnFormRow/threeColumnFormRow";
-import ThreeColumnFormTy from "./type";
+import { ThreeColumnFormTy } from "src/types";
 const ThreeColumnForm = (props: ThreeColumnFormTy) => {
   const { col1Header, col2Header, col3Header, rowData } = props;
 

@@ -1,7 +1,7 @@
 import { call, put, all, takeEvery, select } from "redux-saga/effects";
 import * as slice from "./teacherRoasterSlice";
 import * as Api from "./api";
-import { Teacher } from "./type";
+import { Teacher } from "src/types";
 import * as selectors from "./teacherRoasterSelector";
 
 export function* fetchTeacherRoasterSaga() {

@@ -10,16 +10,16 @@ type Props = Readonly<{
   children?: React.ReactNode;
   type: "primary" | "secondary" | "tertiary";
   className?: string;
-  "data-test-id"?: string;
+  "data-testid"?: string;
 }>;
 
 const Heading = (props: Props) => {
-  const { children, type, className, "data-test-id": dataTestId } = props;
+  const { children, type, className, "data-testid": dataTestId } = props;
   const HeadingTag = TAG_MAP[type];
 
   return (
-    // @ts-expect-error Typescript doesn't understand this funky jsx
-    <HeadingTag className={className} data-test-id={dataTestId}>
+    // @ts-expect-error
+    <HeadingTag className={className} data-testid={dataTestId}>
       {children}
     </HeadingTag>
   );

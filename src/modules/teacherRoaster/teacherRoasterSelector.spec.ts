@@ -2,7 +2,7 @@ import _ from "lodash";
 import * as selectors from "./teacherRoasterSelector";
 import { TeacherRoasterStateSlice } from "./teacherRoasterSlice";
 import dummyData from "./mockData.json";
-import { Teacher } from "./type";
+import { Teacher } from "src/types";
 import { RootState } from "src/app/store";
 
 describe("src/frontend/modules/insights/selectors", () => {
@@ -18,13 +18,7 @@ describe("src/frontend/modules/insights/selectors", () => {
 
     const teachers = selectors.selectTeachers(state);
 
-    expect(teachers).toEqual(
-      _.sortBy(dummyData as ReadonlyArray<Teacher>, [
-        "level",
-        "subject",
-        "name",
-      ])
-    );
+    expect(teachers).toEqual(dummyData as Array<Teacher>);
   });
 
   it("should return true when state is in pending mode", () => {

@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Teacher } from "./type";
+import { Teacher } from "src/types";
 
 export type TeacherRoasterStateSlice = {
   teachers: ReadonlyArray<Teacher>;
@@ -33,7 +33,7 @@ export const teacherRoasterSlice = createSlice({
       const index = state.teachers.findIndex(
         (t: Teacher) => t.name === action.payload.name
       );
-      state.teachers[index].isPresent=action.payload.isPresent;
+      state.teachers[index].isPresent = action.payload.isPresent;
     },
   },
 });

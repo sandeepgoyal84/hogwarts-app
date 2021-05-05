@@ -1,25 +1,45 @@
-import React from "react";
-import { shallow, mount } from "enzyme";
+import { render, unmountComponentAtNode } from "react-dom";
+import { fireEvent } from "@testing-library/react";
+import { act } from "react-dom/test-utils";
 import StudentSubjectChart from "./studentSubjectChart";
-import ThreeColumnFormRowTy from "src/blocks/threeColumnFormRow/type";
+import { Teacher } from "src/types";
+import pretty from "pretty";
+import { ThreeColumnFormRowTy } from "src/types";
 
-// Unit Testing
-describe("StudentSubjectChart should have", () => {
-  it('Heading Component with child as "test"', () => {
-    const studentSubjectChart = shallow(
-      <StudentSubjectChart
-        title="test"
-        col1Header=""
-        col2Header=""
-        col3Header=""
-        rowData={[]}
-      />
-    );
-    const headerProps = studentSubjectChart.find("Heading").first().props();
-    expect(headerProps.children).toBe("test");
+describe("<StudentSubjectChart />", () => {
+  let container: any = null;
+  beforeEach(() => {
+    // setup a DOM element as a render target
+    container = document.createElement("div");
+    document.body.appendChild(container);
   });
 
-  it("snapshot for all filled props", () => {
+  afterEach(() => {
+    // cleanup on exiting
+    unmountComponentAtNode(container);
+    container.remove();
+    container = null;
+  });
+
+  it("renders one <Heading /> components", () => {
+    act(() => {
+      render(
+        <StudentSubjectChart
+          title="test"
+          col1Header=""
+          col2Header=""
+          col3Header=""
+          rowData={[]}
+        />,
+        container
+      );
+    });
+    expect(
+      container.querySelector('[data-testid="ssc_lbl_heading"]').textContent
+    ).toBe("test");
+  });
+
+  it("should have passing right props to child components", () => {
     const data = [
       {
         name: "Harry Potter",
@@ -32,76 +52,41 @@ describe("StudentSubjectChart should have", () => {
       col2Value: field.subject,
       col3Value: field.teacher,
     })) as ThreeColumnFormRowTy[];
-    const studentSubjectChart = shallow(
-      <StudentSubjectChart
-        title="test"
-        col1Header="col1"
-        col2Header="col2"
-        col3Header="col3"
-        rowData={formRows}
-      />
+
+    act(() => {
+      render(
+        <StudentSubjectChart
+          title="test"
+          col1Header="col1"
+          col2Header="col2"
+          col3Header="col3"
+          rowData={formRows}
+        />,
+        container
+      );
+    });
+    expect(container.querySelectorAll('[data-testid="tcfr_col1"]').length).toBe(
+      2
+    );
+    expect(container.querySelectorAll('[data-testid="tcfr_col2"]').length).toBe(
+      2
+    );
+    expect(container.querySelectorAll('[data-testid="tcfr_col3"]').length).toBe(
+      2
     );
 
-    const headerProps = studentSubjectChart
-      .find("ThreeColumnForm")
-      .first()
-      .props();
-    // @ts-ignore-error
-    expect(headerProps.col1Header).toBe("col1");
-    // @ts-ignore-error
-    expect(headerProps.col2Header).toBe("col2");
-    // @ts-ignore-error
-    expect(headerProps.col3Header).toBe("col3");
+    expect(
+      container.querySelectorAll('[data-testid="tcfr_col1"]')[0].textContent
+    ).toBe("col1");
+    expect(
+      container.querySelectorAll('[data-testid="tcfr_col2"]')[0].textContent
+    ).toBe("col2");
+    expect(
+      container.querySelectorAll('[data-testid="tcfr_col3"]')[0].textContent
+    ).toBe("col3");
   });
-});
 
-// Integration testing
-describe("StudentSubjectChart should match t", () => {
-  it("snapshot for all filled props 1", () => {
-    const data = [
-      {
-        name: "Harry Potter",
-        subject: "Potions Master",
-        teacher: "Horace Slughorn",
-      },
-      {
-        name: "Hermione Granger",
-        subject: "Potions Master",
-        teacher: null,
-      },
-    ];
-    const formRows = data.map((field) => ({
-      col1Value: field.name,
-      col2Value: field.subject,
-      col3Value: field.teacher,
-    })) as ThreeColumnFormRowTy[];
-
-    const studentSubjectChart = mount(
-      <StudentSubjectChart
-        title="test"
-        col1Header="col1"
-        col2Header="col2"
-        col3Header="col3"
-        rowData={formRows}
-      />
-    );
-    const expected = ["col1", "Harry Potter", "Hermione Granger"];
-    studentSubjectChart
-      .find("ThreeColumnForm")
-      .first()
-      .find("ThreeColumnFormRow")
-      .forEach((t, i) => {
-        expect(t.find("Label").first().find("span").first().text()).toBe(
-          expected[i]
-        );
-      });
-    //  expect(studentSubjectChart.find('ThreeColumnForm').first().find('ThreeColumnFormRow').first().find('Label').first().find('span').first()).toEqual("<span>Harry Potter</span>");
-  });
-});
-
-// snapshot testing
-describe("StudentSubjectChart should match", () => {
-  it("snapshot for all filled props", () => {
+  it("should match with snapshot for all filled props", () => {
     const data = [
       {
         name: "Harry Potter",
@@ -139,16 +124,60 @@ describe("StudentSubjectChart should match", () => {
       col2Value: field.subject,
       col3Value: field.teacher,
     })) as ThreeColumnFormRowTy[];
-    const studentSubjectChart = shallow(
-      <StudentSubjectChart
-        title="test"
-        col1Header="col1"
-        col2Header="col2"
-        col3Header="col3"
-        rowData={formRows}
-      />
-    );
 
-    expect(studentSubjectChart).toMatchSnapshot();
+    act(() => {
+      render(
+        <StudentSubjectChart
+          title="test"
+          col1Header="col1"
+          col2Header="col2"
+          col3Header="col3"
+          rowData={formRows}
+        />,
+        container
+      );
+    });
+    expect(pretty(container.innerHTML)).toMatchInlineSnapshot(`
+      "<div style=\\"display: flex; flex-direction: column;\\">
+        <h2 data-testid=\\"ssc_lbl_heading\\">test</h2>
+        <div style=\\"display: flex; flex-direction: column; flex-grow: 1;\\">
+          <div style=\\"display: flex; justify-content: space-around; margin: 10px;\\">
+            <div style=\\"flex-basis: 35%; font-weight: bolder;\\"><span data-testid=\\"tcfr_col1\\">col1</span></div>
+            <div style=\\"flex-basis: 35%; font-weight: bolder;\\"><span data-testid=\\"tcfr_col2\\">col2</span></div>
+            <div style=\\"flex-basis: 30%; font-weight: bolder;\\"><span data-testid=\\"tcfr_col3\\">col3</span></div>
+          </div>
+          <div style=\\"display: flex; justify-content: space-around; margin: 10px;\\">
+            <div style=\\"flex-basis: 35%; font-weight: normal;\\"><span data-testid=\\"tcfr_col1\\">Harry Potter</span></div>
+            <div style=\\"flex-basis: 35%; font-weight: normal;\\"><span data-testid=\\"tcfr_col2\\">Potions Master</span></div>
+            <div style=\\"flex-basis: 30%; font-weight: normal;\\"><span data-testid=\\"tcfr_col3\\">Horace Slughorn</span></div>
+          </div>
+          <div style=\\"display: flex; justify-content: space-around; margin: 10px;\\">
+            <div style=\\"flex-basis: 35%; font-weight: normal;\\"><span data-testid=\\"tcfr_col1\\">Hermione Granger</span></div>
+            <div style=\\"flex-basis: 35%; font-weight: normal;\\"><span data-testid=\\"tcfr_col2\\">Potions Master</span></div>
+            <div style=\\"flex-basis: 30%; font-weight: normal;\\"><span data-testid=\\"tcfr_col3\\"></span></div>
+          </div>
+          <div style=\\"display: flex; justify-content: space-around; margin: 10px;\\">
+            <div style=\\"flex-basis: 35%; font-weight: normal;\\"><span data-testid=\\"tcfr_col1\\">Ron Weasley</span></div>
+            <div style=\\"flex-basis: 35%; font-weight: normal;\\"><span data-testid=\\"tcfr_col2\\">Potions Master</span></div>
+            <div style=\\"flex-basis: 30%; font-weight: normal;\\"><span data-testid=\\"tcfr_col3\\">Severus Snape</span></div>
+          </div>
+          <div style=\\"display: flex; justify-content: space-around; margin: 10px;\\">
+            <div style=\\"flex-basis: 35%; font-weight: normal;\\"><span data-testid=\\"tcfr_col1\\">Draco Malfoy</span></div>
+            <div style=\\"flex-basis: 35%; font-weight: normal;\\"><span data-testid=\\"tcfr_col2\\">Potions Master</span></div>
+            <div style=\\"flex-basis: 30%; font-weight: normal;\\"><span data-testid=\\"tcfr_col3\\">Horace Slughorn</span></div>
+          </div>
+          <div style=\\"display: flex; justify-content: space-around; margin: 10px;\\">
+            <div style=\\"flex-basis: 35%; font-weight: normal;\\"><span data-testid=\\"tcfr_col1\\">Padma Patil</span></div>
+            <div style=\\"flex-basis: 35%; font-weight: normal;\\"><span data-testid=\\"tcfr_col2\\">Potions Master</span></div>
+            <div style=\\"flex-basis: 30%; font-weight: normal;\\"><span data-testid=\\"tcfr_col3\\"></span></div>
+          </div>
+          <div style=\\"display: flex; justify-content: space-around; margin: 10px;\\">
+            <div style=\\"flex-basis: 35%; font-weight: normal;\\"><span data-testid=\\"tcfr_col1\\">Luna Lovegood</span></div>
+            <div style=\\"flex-basis: 35%; font-weight: normal;\\"><span data-testid=\\"tcfr_col2\\">Potions Master</span></div>
+            <div style=\\"flex-basis: 30%; font-weight: normal;\\"><span data-testid=\\"tcfr_col3\\">Severus Snape</span></div>
+          </div>
+        </div>
+      </div>"
+    `); /* ... gets filled automatically by jest ... */
   });
 });

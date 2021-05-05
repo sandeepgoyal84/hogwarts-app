@@ -1,9 +1,8 @@
-import _ from "lodash";
 import { RootState } from "src/app/store";
-import { Teacher } from "./type";
+import { Teacher } from "src/types";
 
-export const selectTeachers = (state: RootState): Array<Teacher> =>
-  _.sortBy(state.teacherRoaster.teachers, ["level", "subject", "name"]);
+export const selectTeachers = (state: RootState): ReadonlyArray<Teacher> =>
+  state.teacherRoaster.teachers as Array<Teacher>;
 
 export const isTeacherStatePending = (state: RootState): boolean =>
   state.teacherRoaster.status === "pending";

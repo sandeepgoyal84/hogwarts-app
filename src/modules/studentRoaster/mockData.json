@@ -1,32 +1,32 @@
 [
-    {
-        "name": "Harry Potter",
-        "subject": "Potions Master",
-        "teacher": "Horace Slughorn"
-    },
-    {
-        "name": "Hermione Granger",
-        "subject": "Potions Master",
-        "teacher": null
-    },
-    {
-        "name": "Ron Weasley",
-        "subject": "Potions Master",
-        "teacher": "Severus Snape"
-    },
-    {
-        "name": "Draco Malfoy",
-        "subject": "Potions Master",
-        "teacher": "Horace Slughorn"
-    },
-    {
-        "name": "Padma Patil",
-        "subject": "Potions Master",
-        "teacher": null
-    },
-    {
-        "name": "Luna Lovegood",
-        "subject": "Potions Master",
-        "teacher": "Severus Snape"
-    }
+  {
+    "name": "Harry Potter",
+    "subject": "Potions Master",
+    "teacher": "Horace Slughorn"
+  },
+  {
+    "name": "Hermione Granger",
+    "subject": "Potions Master",
+    "teacher": null
+  },
+  {
+    "name": "Ron Weasley",
+    "subject": "Potions Master",
+    "teacher": "Severus Snape"
+  },
+  {
+    "name": "Draco Malfoy",
+    "subject": "Potions Master",
+    "teacher": "Horace Slughorn"
+  },
+  {
+    "name": "Padma Patil",
+    "subject": "Potions Master",
+    "teacher": null
+  },
+  {
+    "name": "Luna Lovegood",
+    "subject": "Potions Master",
+    "teacher": "Severus Snape"
+  }
 ]

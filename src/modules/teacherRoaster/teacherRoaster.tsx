@@ -1,3 +1,4 @@
+import _ from "lodash";
 import React, { useEffect } from "react";
 import { useAppSelector, useAppDispatch } from "src/app/hooks";
 import * as selector from "./teacherRoasterSelector";
@@ -11,10 +12,14 @@ const TeacherRoaster = () => {
     { key: "Absent", value: "Absent" },
   ];
 
-  const attendanceData = useAppSelector(selector.selectTeachers);
+  const attendanceData = _.sortBy(useAppSelector(selector.selectTeachers), [
+    "level",
+    "subject",
+    "name",
+  ]);
 
   const dispatch = useAppDispatch();
-  const callback = (id: string, val: string) => {
+  const callback = (id: string, val: string): void => {
     dispatch(
       update({
         name: id,

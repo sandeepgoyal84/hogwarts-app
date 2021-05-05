@@ -1,1 +1,3 @@
-export const fetchStudentRoaster =()=> ({type:"studentRoaster/fetchStudentRoaster"})
+export const fetchStudentRoaster = () => ({
+  type: "studentRoaster/fetchStudentRoaster",
+});

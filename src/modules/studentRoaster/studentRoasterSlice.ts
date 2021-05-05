@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Student } from "./type";
+import { Student } from "src/types";
 
 export type StudentRoasterStateSlice = {
   students: ReadonlyArray<Student>;

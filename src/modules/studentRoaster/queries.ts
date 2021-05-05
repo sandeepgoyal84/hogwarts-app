@@ -1,6 +1,5 @@
 import _ from "lodash";
-import { Student } from "./type";
-import { Teacher } from "../teacherRoaster/type";
+import { Student, Teacher } from "src/types";
 
 export function updateStudentRoaster(
   teachers: ReadonlyArray<Teacher>,
@@ -27,10 +26,7 @@ export function updateStudentRoaster(
     }
 
     if (assignedTeacher && !assignedTeacher.isPresent) {
-      while (
-        assignedTeacher &&
-        !assignedTeacher.isPresent
-      ) {
+      while (assignedTeacher && !assignedTeacher.isPresent) {
         assignedTeacher = _.head(
           _.filter(teachers, { name: assignedTeacher.headName })
         ) as Teacher;

@@ -1,7 +1,7 @@
 import { runSaga } from "redux-saga";
 import * as api from "./api";
 import dummyData from "./mockData.json";
-import { Teacher } from "./type";
+import { Teacher } from "src/types";
 import * as slice from "./teacherRoasterSlice";
 import { fetchTeacherRoasterSaga } from "./teacherRoasterSaga";
 import { RootState } from "src/app/store";

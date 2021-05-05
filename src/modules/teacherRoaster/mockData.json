@@ -1,66 +1,66 @@
 [
-    {
-        "name": "Professor Dumbledore",
-        "subject": null,
-        "designation": "Headmaster",
-        "headName": null,
-        "level": 0,
-        "isPresent": true
-    },
-    {
-        "name": "Minerva McGonagall",
-        "subject": null,
-        "designation": "Headmistress",
-        "headName": "Professor Dumbledore",
-        "level": 1,
-        "isPresent": true
-    },
-    {
-        "name": "Rubeus Hagrid",
-        "subject": "Potions Master",
-        "designation": "Standby Professor",
-        "headName": "Minerva McGonagall",
-        "level": 2,
-        "isPresent": true
-    },
-    {
-        "name": "Horace Slughorn",
-        "subject": "Potions Master",
-        "designation": "Professor",
-        "headName": "Rubeus Hagrid",
-        "level": 3,
-        "isPresent": true
-    },
-    {
-        "name": "Severus Snape",
-        "subject": "Potions Master",
-        "designation": "Professor",
-        "headName": "Rubeus Hagrid",
-        "level": 3,
-        "isPresent": true
-    },
-    {
-        "name": "Alastor Moody",
-        "subject": "Defence Against the Dark Arts",
-        "designation": "Standby Professor",
-        "headName": "Minerva McGonagall",
-        "level": 2,
-        "isPresent": true
-    },
-    {
-        "name": "Remus Lupin",
-        "subject": "Defence Against the Dark Arts",
-        "designation": "Professor",
-        "headName": "Alastor Moody",
-        "level": 3,
-        "isPresent": true
-    },
-    {
-        "name": "Gilderoy Lockhart",
-        "subject": "Defence Against the Dark Arts",
-        "designation": "Professor",
-        "headName": "Alastor Moody",
-        "level": 3,
-        "isPresent": true
-    }
+  {
+    "name": "Professor Dumbledore",
+    "subject": null,
+    "designation": "Headmaster",
+    "headName": null,
+    "level": 0,
+    "isPresent": true
+  },
+  {
+    "name": "Minerva McGonagall",
+    "subject": null,
+    "designation": "Headmistress",
+    "headName": "Professor Dumbledore",
+    "level": 1,
+    "isPresent": true
+  },
+  {
+    "name": "Rubeus Hagrid",
+    "subject": "Potions Master",
+    "designation": "Standby Professor",
+    "headName": "Minerva McGonagall",
+    "level": 2,
+    "isPresent": true
+  },
+  {
+    "name": "Horace Slughorn",
+    "subject": "Potions Master",
+    "designation": "Professor",
+    "headName": "Rubeus Hagrid",
+    "level": 3,
+    "isPresent": true
+  },
+  {
+    "name": "Severus Snape",
+    "subject": "Potions Master",
+    "designation": "Professor",
+    "headName": "Rubeus Hagrid",
+    "level": 3,
+    "isPresent": true
+  },
+  {
+    "name": "Alastor Moody",
+    "subject": "Defence Against the Dark Arts",
+    "designation": "Standby Professor",
+    "headName": "Minerva McGonagall",
+    "level": 2,
+    "isPresent": true
+  },
+  {
+    "name": "Remus Lupin",
+    "subject": "Defence Against the Dark Arts",
+    "designation": "Professor",
+    "headName": "Alastor Moody",
+    "level": 3,
+    "isPresent": true
+  },
+  {
+    "name": "Gilderoy Lockhart",
+    "subject": "Defence Against the Dark Arts",
+    "designation": "Professor",
+    "headName": "Alastor Moody",
+    "level": 3,
+    "isPresent": true
+  }
 ]
