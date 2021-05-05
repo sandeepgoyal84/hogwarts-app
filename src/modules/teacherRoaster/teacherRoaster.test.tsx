@@ -62,10 +62,7 @@ describe("<TeacherAttendanceChart />", () => {
   });
 
   it("changing dropdown should be reflected", () => {
-    const teacherRoasterSagaSpy = jest.spyOn(
-      store,
-      "dispatch"
-    );
+    const teacherRoasterSagaSpy = jest.spyOn(store, "dispatch");
 
     render(
       <Provider store={store}>
