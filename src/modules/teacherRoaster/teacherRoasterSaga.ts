@@ -28,6 +28,7 @@ export function* fetchTeacherRoasterSaga() {
     yield put(slice.error());
   }
 }
+
 export function* updateTeacherStatusSaga({
   name,
   isPresent,

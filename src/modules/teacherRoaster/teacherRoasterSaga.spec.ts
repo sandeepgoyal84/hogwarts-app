@@ -27,7 +27,7 @@ describe("src/modules/teacherRoaster/teacherRoasterSaga", () => {
     };
   });
   describe("fetchTeacherRoasterSaga", () => {
-    it("should call api and dispatch success action", async () => {
+    it("should call data api and dispatch success action", async () => {
       const fakeData = dummyData as ReadonlyArray<Teacher>;
       const fetchTeachers = jest
         .spyOn(api, "fetchTeacherRoasterApi")
@@ -48,26 +48,7 @@ describe("src/modules/teacherRoaster/teacherRoasterSaga", () => {
       fetchTeachers.mockClear();
     });
 
-    it("should call api and dispatch error action", async () => {
-      const fetchTeachers = jest
-        .spyOn(api, "fetchTeacherRoasterApi")
-        .mockImplementation((): any => Promise.reject({ error: "error" }));
-      const dispatched: any[] = [];
-      await runSaga(
-        {
-          dispatch: (action) => dispatched.push(action),
-          getState: () => state,
-        },
-        // @ts-ignore-error
-        fetchTeacherRoasterSaga
-      );
-
-      expect(fetchTeachers).toHaveBeenCalledTimes(1);
-      expect(dispatched[0]).toEqual(slice.pending());
-      expect(dispatched[1]).toEqual(slice.error());
-      fetchTeachers.mockClear();
-    });
-    it("should call api and dispatch error action2", async () => {
+    it("should call data api and dispatch error action", async () => {
       const fetchTeachers = jest
         .spyOn(api, "fetchTeacherRoasterApi")
         .mockImplementation((): any => Promise.reject({ error: "error" }));
@@ -89,7 +70,7 @@ describe("src/modules/teacherRoaster/teacherRoasterSaga", () => {
   });
 
   describe("updateTeacherStatusSaga", () => {
-    it("should call to reducer to update state", async () => {
+    it("should dispatch action to update state", async () => {
       const dispatched: any[] = [];
       await runSaga(
         {

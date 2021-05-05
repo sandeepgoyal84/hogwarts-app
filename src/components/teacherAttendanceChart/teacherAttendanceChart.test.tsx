@@ -5,7 +5,7 @@ import TeacherAttendanceChart from "./teacherAttendanceChart";
 import { Teacher } from "src/types";
 import pretty from "pretty";
 
-describe("<TeacherAttendanceChart />", () => {
+describe("src/components/teacherAttendanceChart/teacherAttendanceChart", () => {
   let container: any = null;
   beforeEach(() => {
     // setup a DOM element as a render target

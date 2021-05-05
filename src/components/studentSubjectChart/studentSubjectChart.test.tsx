@@ -1,12 +1,13 @@
-import { render, unmountComponentAtNode } from "react-dom";
+import {  unmountComponentAtNode } from "react-dom";
 import { fireEvent } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { act } from "react-dom/test-utils";
 import StudentSubjectChart from "./studentSubjectChart";
 import { Teacher } from "src/types";
 import pretty from "pretty";
 import { ThreeColumnFormRowTy } from "src/types";
 
-describe("<StudentSubjectChart />", () => {
+describe("src/components/studentSubjectChart/studentSubjectChart", () => {
   let container: any = null;
   beforeEach(() => {
     // setup a DOM element as a render target
@@ -22,21 +23,16 @@ describe("<StudentSubjectChart />", () => {
   });
 
   it("renders one <Heading /> components", () => {
-    act(() => {
-      render(
-        <StudentSubjectChart
-          title="test"
-          col1Header=""
-          col2Header=""
-          col3Header=""
-          rowData={[]}
-        />,
-        container
-      );
-    });
-    expect(
-      container.querySelector('[data-testid="ssc_lbl_heading"]').textContent
-    ).toBe("test");
+    render(
+      <StudentSubjectChart
+        title="test"
+        col1Header=""
+        col2Header=""
+        col3Header=""
+        rowData={[]}
+      />
+    );
+    expect(screen.getByTestId("ssc_lbl_heading").textContent).toBe("test");
   });
 
   it("should have passing right props to child components", () => {
@@ -53,39 +49,23 @@ describe("<StudentSubjectChart />", () => {
       col3Value: field.teacher,
     })) as ThreeColumnFormRowTy[];
 
-    act(() => {
-      render(
-        <StudentSubjectChart
-          title="test"
-          col1Header="col1"
-          col2Header="col2"
-          col3Header="col3"
-          rowData={formRows}
-        />,
-        container
-      );
-    });
-    expect(container.querySelectorAll('[data-testid="tcfr_col1"]').length).toBe(
-      2
+    render(
+      <StudentSubjectChart
+        title="test"
+        col1Header="col1"
+        col2Header="col2"
+        col3Header="col3"
+        rowData={formRows}
+      />
     );
-    expect(container.querySelectorAll('[data-testid="tcfr_col2"]').length).toBe(
-      2
-    );
-    expect(container.querySelectorAll('[data-testid="tcfr_col3"]').length).toBe(
-      2
-    );
+    expect(screen.getAllByTestId("tcfr_col1").length).toBe(2);
+    expect(screen.getAllByTestId("tcfr_col2").length).toBe(2);
+    expect(screen.getAllByTestId("tcfr_col3").length).toBe(2);
 
-    expect(
-      container.querySelectorAll('[data-testid="tcfr_col1"]')[0].textContent
-    ).toBe("col1");
-    expect(
-      container.querySelectorAll('[data-testid="tcfr_col2"]')[0].textContent
-    ).toBe("col2");
-    expect(
-      container.querySelectorAll('[data-testid="tcfr_col3"]')[0].textContent
-    ).toBe("col3");
+    expect(screen.getAllByTestId("tcfr_col1")[0].textContent).toBe("col1");
+    expect(screen.getAllByTestId("tcfr_col2")[0].textContent).toBe("col2");
+    expect(screen.getAllByTestId("tcfr_col3")[0].textContent).toBe("col3");
   });
-
   it("should match with snapshot for all filled props", () => {
     const data = [
       {
@@ -125,6 +105,8 @@ describe("<StudentSubjectChart />", () => {
       col3Value: field.teacher,
     })) as ThreeColumnFormRowTy[];
 
+    let container = document.createElement("div");
+    document.body.appendChild(container);
     act(() => {
       render(
         <StudentSubjectChart
@@ -179,5 +161,10 @@ describe("<StudentSubjectChart />", () => {
         </div>
       </div>"
     `); /* ... gets filled automatically by jest ... */
+
+    
+    unmountComponentAtNode(container);
+    container.remove();
+    container = null;
   });
 });

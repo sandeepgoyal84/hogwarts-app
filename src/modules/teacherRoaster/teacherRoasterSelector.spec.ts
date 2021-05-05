@@ -5,7 +5,7 @@ import dummyData from "./mockData.json";
 import { Teacher } from "src/types";
 import { RootState } from "src/app/store";
 
-describe("src/frontend/modules/insights/selectors", () => {
+describe("src/modules/teacherRoaster/teacherRoasterSelector", () => {
   it("should return teachers when  data is loaded", () => {
     // @ts-ignore-error partial state
     const state: RootState = {

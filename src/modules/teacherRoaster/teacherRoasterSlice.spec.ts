@@ -8,7 +8,7 @@ import teacherRoasterReducer, {
 import dummyData from "./mockData.json";
 import { Teacher } from "src/types";
 
-describe("src/components/teacherRoaster/teacherRoasterSlice", () => {
+describe("src/modules/teacherRoaster/teacherRoasterSlice", () => {
   const initialState: TeacherRoasterStateSlice = {
     teachers: dummyData as ReadonlyArray<Teacher>,
     status: "success",

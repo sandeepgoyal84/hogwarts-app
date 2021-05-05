@@ -6,16 +6,13 @@ import * as studentApi from "src/modules/studentRoaster/api";
 import dummyTeacherData from "./mockData.json";
 import dummyStudentData from "src/modules/studentRoaster/mockData.json";
 import { Provider } from "react-redux";
-import * as appStore from "src/app/store";
 import { render, screen } from "@testing-library/react";
 import { store } from "src/app/store";
-import { useDispatch } from "react-redux";
 import * as teacherActionTypes from "src/modules/teacherRoaster/teacherRoasterSagaActionType";
-import * as teacherRoasterSaga from "src/modules/teacherRoaster/teacherRoasterSaga";
 
 // const useDispatchMock = useDispatch as jest.Mock;
 
-describe("<TeacherAttendanceChart />", () => {
+describe("src/modules/teacherRoaster/teacherRoaster", () => {
   const fakeTeacherData = dummyTeacherData as ReadonlyArray<Teacher>;
   let fetchTeachers: jest.SpyInstance<
     Promise<{
