@@ -4,6 +4,44 @@ import { Student, Teacher } from "src/types";
 import * as queries from "./queries";
 
 describe("src/modules/studentRoaster/queries", () => {
+  it("should return students when same student data when teacher array is empty", () => {
+    const studentData = dummyData as ReadonlyArray<Student>;
+    const teacherData = [] as ReadonlyArray<Teacher>;
+    const students = queries.updateStudentRoaster(teacherData, studentData);
+    const expectedResult = [
+      {
+        name: "Harry Potter",
+        subject: "Potions Master",
+        teacher: "Horace Slughorn",
+      },
+      {
+        name: "Hermione Granger",
+        subject: "Potions Master",
+        teacher: null,
+      },
+      {
+        name: "Ron Weasley",
+        subject: "Potions Master",
+        teacher: "Severus Snape",
+      },
+      {
+        name: "Draco Malfoy",
+        subject: "Potions Master",
+        teacher: "Horace Slughorn",
+      },
+      {
+        name: "Padma Patil",
+        subject: "Potions Master",
+        teacher: null,
+      },
+      {
+        name: "Luna Lovegood",
+        subject: "Potions Master",
+        teacher: "Severus Snape",
+      },
+    ];
+    expect(students).toEqual(expectedResult);
+  });
   it("should return students when  data is loaded", () => {
     const studentData = dummyData as ReadonlyArray<Student>;
     const teacherData = teacherDummyData as ReadonlyArray<Teacher>;
@@ -561,6 +599,142 @@ describe("src/modules/studentRoaster/queries", () => {
       {
         name: "Luna Lovegood",
         subject: "Potions Master",
+        teacher: "Not Assigned",
+      },
+    ];
+    expect(students).toEqual(expectedResult);
+  });
+
+  it("check when all Professors absent except Level 0 & students are with random subject", () => {
+    const teacherData = [
+      {
+        name: "Professor Dumbledore",
+        subject: null,
+        designation: "Headmaster",
+        headName: null,
+        level: 0,
+        isPresent: false,
+      },
+      {
+        name: "Minerva McGonagall",
+        subject: null,
+        designation: "Headmistress",
+        headName: "Professor Dumbledore",
+        level: 1,
+        isPresent: false,
+      },
+      {
+        name: "Alastor Moody",
+        subject: "Defence Against the Dark Arts",
+        designation: "Standby Professor",
+        headName: "Minerva McGonagall",
+        level: 2,
+        isPresent: true,
+      },
+      {
+        name: "Rubeus Hagrid",
+        subject: "Potions Master",
+        designation: "Standby Professor",
+        headName: "Minerva McGonagall",
+        level: 2,
+        isPresent: false,
+      },
+      {
+        name: "Gilderoy Lockhart",
+        subject: "Defence Against the Dark Arts",
+        designation: "Professor",
+        headName: "Alastor Moody",
+        level: 3,
+        isPresent: true,
+      },
+      {
+        name: "Remus Lupin",
+        subject: "Defence Against the Dark Arts",
+        designation: "Professor",
+        headName: "Alastor Moody",
+        level: 3,
+        isPresent: true,
+      },
+      {
+        name: "Horace Slughorn",
+        subject: "Potions Master",
+        designation: "Professor",
+        headName: "Rubeus Hagrid",
+        level: 3,
+        isPresent: false,
+      },
+      {
+        name: "Severus Snape",
+        subject: "Potions Master",
+        designation: "Professor",
+        headName: "Rubeus Hagrid",
+        level: 3,
+        isPresent: false,
+      },
+    ] as ReadonlyArray<Teacher>;
+
+    const studentData = [
+      {
+        name: "Harry Potter",
+        subject: "Strange Master",
+        teacher: null,
+      },
+      {
+        name: "Hermione Granger",
+        subject: "Strange Master",
+        teacher: null,
+      },
+      {
+        name: "Ron Weasley",
+        subject: "Strange Master",
+        teacher: null,
+      },
+      {
+        name: "Draco Malfoy",
+        subject: "Strange Master",
+        teacher: null,
+      },
+      {
+        name: "Padma Patil",
+        subject: "Strange Master",
+        teacher: null,
+      },
+      {
+        name: "Luna Lovegood",
+        subject: "Strange Master",
+        teacher: null,
+      },
+    ] as ReadonlyArray<Student>;
+    const students = queries.updateStudentRoaster(teacherData, studentData);
+    const expectedResult = [
+      {
+        name: "Harry Potter",
+        subject: "Strange Master",
+        teacher: "Not Assigned",
+      },
+      {
+        name: "Hermione Granger",
+        subject: "Strange Master",
+        teacher: "Not Assigned",
+      },
+      {
+        name: "Ron Weasley",
+        subject: "Strange Master",
+        teacher: "Not Assigned",
+      },
+      {
+        name: "Draco Malfoy",
+        subject: "Strange Master",
+        teacher: "Not Assigned",
+      },
+      {
+        name: "Padma Patil",
+        subject: "Strange Master",
+        teacher: "Not Assigned",
+      },
+      {
+        name: "Luna Lovegood",
+        subject: "Strange Master",
         teacher: "Not Assigned",
       },
     ];

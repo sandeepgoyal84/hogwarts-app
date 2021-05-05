@@ -10,7 +10,7 @@ function App() {
   return (
     <div className="App">
       <div>
-        <h1>Hogwarts University</h1>
+        <h1 data-testid="app_heading">Hogwarts University</h1>
       </div>
 
       <Router>

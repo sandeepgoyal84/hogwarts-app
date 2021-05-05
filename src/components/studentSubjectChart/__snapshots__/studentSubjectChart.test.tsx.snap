@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`StudentSubjectChart snapshot comparision should match with snapshot for all filled props 1`] = `ShallowWrapper {}`;

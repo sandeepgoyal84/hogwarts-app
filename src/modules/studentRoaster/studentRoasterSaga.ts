@@ -1,16 +1,16 @@
 import { call, put, all, takeEvery, select } from "redux-saga/effects";
 import * as slice from "./studentRoasterSlice";
 import * as Api from "./api";
-import { Student } from "src/types";
-import * as selectors from "./studentRoasterSelector";
+import { Student, Teacher } from "src/types";
+import * as actionTypes from "./studentRoasterSagaActionType";
+import * as teacherSelectors from "src/modules/teacherRoaster/teacherRoasterSelector";
+import * as queries from "./queries";
 
-export function* fetchStudentRoasterSaga() {
-  const students: ReadonlyArray<Student> = yield select(
-    selectors.selectStudents
+export function* refreshStudentRoasterSaga() {
+  const teachers: ReadonlyArray<Teacher> = yield select(
+    teacherSelectors.selectTeachers
   );
-  if (students && students.length > 0) {
-    return;
-  }
+
   // set status pending in state
   yield put(slice.pending());
   try {
@@ -19,10 +19,11 @@ export function* fetchStudentRoasterSaga() {
       response: ReadonlyArray<Student>;
     } = yield call(Api.fetchStudentRoasterApi);
 
+    const data = queries.updateStudentRoaster(teachers, result.response);
     // set student reords and status as success in state
     yield put(
       slice.add({
-        students: result.response,
+        students: data,
       })
     );
   } catch {
@@ -30,12 +31,13 @@ export function* fetchStudentRoasterSaga() {
     yield put(slice.error());
   }
 }
-function* onFetchStudentRoasterSaga() {
+
+function* onRefreshStudentRoasterSaga() {
   yield takeEvery(
-    "studentRoaster/fetchStudentRoaster",
-    fetchStudentRoasterSaga
+    actionTypes.REFRESH_STUDENET_ROASTER,
+    refreshStudentRoasterSaga
   );
 }
 export default function* rootSaga() {
-  yield all([onFetchStudentRoasterSaga()]);
+  yield all([onRefreshStudentRoasterSaga()]);
 }

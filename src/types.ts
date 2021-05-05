@@ -10,13 +10,13 @@ export type Teacher = {
 export type Student = {
   name: string;
   subject: string;
-  teacher?: string;
+  teacher?: string | null;
 };
 
 export type ThreeColumnFormRowTy = {
   col1Value?: string;
   col2Value?: string;
-  col3Value?: string;
+  col3Value?: string | null;
   isHeader?: boolean;
 };
 

@@ -5,6 +5,9 @@ export function updateStudentRoaster(
   teachers: ReadonlyArray<Teacher>,
   students: ReadonlyArray<Student>
 ): ReadonlyArray<Student> {
+  if(teachers && teachers.length==0){
+    return students;
+  }
   const newStudentArr = _.map(students, (st) => {
     let assignedTeacher: Teacher | null | undefined;
     if (_.isEmpty(st.teacher)) {
@@ -22,7 +25,7 @@ export function updateStudentRoaster(
         ) as Teacher | null | undefined;
       }
     } else {
-      assignedTeacher = _.head(_.filter(teachers, { name: st.teacher }));
+      assignedTeacher = _.head(_.filter(teachers, { name: st.teacher })) as Teacher;
     }
 
     if (assignedTeacher && !assignedTeacher.isPresent) {
