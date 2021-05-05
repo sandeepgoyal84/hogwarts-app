@@ -1,4 +1,3 @@
-import { fireEvent } from "@testing-library/react";
 import StudentRoaster from "./studentRoaster";
 import { Teacher, Student } from "src/types";
 import * as studentApi from "./api";
@@ -8,9 +7,6 @@ import dummyTeacherData from "src/modules/teacherRoaster/mockData.json";
 import { Provider } from "react-redux";
 import { render, screen } from "@testing-library/react";
 import { store } from "src/app/store";
-import * as studentActionTypes from "src/modules/studentRoaster/studentRoasterSagaActionType";
-
-// const useDispatchMock = useDispatch as jest.Mock;
 
 describe("src/modules/studentRoaster/studentRoaster", () => {
   const fakeTeacherData = dummyTeacherData as ReadonlyArray<Teacher>;
@@ -65,6 +61,6 @@ describe("src/modules/studentRoaster/studentRoaster", () => {
       </Provider>
     );
     // check number of student should be same as provided no of rows
-    expect(screen.getAllByTestId("tcfr_col1").length).toBe(6);
+    expect(screen.getAllByTestId("tcfr_col1").length).toBe(7);
   });
 });

@@ -1,4 +1,4 @@
-import { call, put, all, takeEvery, select } from "redux-saga/effects";
+import { call, put, all, takeEvery } from "redux-saga/effects";
 import * as slice from "./teacherRoasterSlice";
 import * as Api from "./api";
 import { Teacher } from "src/types";
