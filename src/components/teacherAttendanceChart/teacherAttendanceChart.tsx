@@ -1,16 +1,27 @@
-import Label from "src/atoms/label/label";
-import Dropdown from "src/atoms/dropdown/dropdown";
 import Heading from "src/atoms/heading/heading";
-import { Teacher } from "src/types";
+import TwoColumnForm from "src/blocks/twoColumnForm/twoColumnForm";
+import { Teacher, TwoColumnFormRowTy } from "src/types";
 type Props = {
   callback: (id: string, val: string) => void;
   attendanceData: Teacher[];
-  getOptions: { key: string; value: string }[];
 };
 
 const TeacherAttendanceChart = (props: Props) => {
-  const { callback, attendanceData, getOptions } = props;
+  const { callback, attendanceData } = props;
 
+  const getOptions = () => [
+    { key: "Present", value: "Present" },
+    { key: "Absent", value: "Absent" },
+  ];
+  const rowData = attendanceData.map((i) => {
+    return {
+      col1Value: i.name,
+      col2Value: {
+        options: getOptions(),
+        selectedItem: i.isPresent ? "Present" : "Absent",
+      },
+    } as TwoColumnFormRowTy;
+  });
   return (
     <div
       style={{
@@ -22,44 +33,13 @@ const TeacherAttendanceChart = (props: Props) => {
       <Heading data-testid="tac_heading" type="secondary">
         Teacher Roaster
       </Heading>
-      <div
-        style={{
-          margin: "10px",
-          display: "flex",
-          justifyContent: "space-around",
-        }}
-      >
-        <div style={{ flexBasis: "50%", fontWeight: "bolder" }}>
-          <Label>Teacher Name</Label>
-        </div>
-        <div style={{ flexBasis: "50%", fontWeight: "bolder" }}>
-          <Label>Attendance Status</Label>
-        </div>
-      </div>
-      {attendanceData.map((field) => (
-        <div
-          data-testid={`tac_tr_${field.name}`}
-          style={{
-            margin: "10px",
-            display: "flex",
-            justifyContent: "space-around",
-          }}
-          key={field.name}
-        >
-          <div style={{ flexBasis: "50%" }}>
-            <Label data-testid={`tac_col1_${field.name}`}>{field.name}</Label>
-          </div>
-          <div style={{ flexBasis: "50%" }}>
-            <Dropdown
-              identifier={field.name}
-              optionList={getOptions}
-              selectedItem={field.isPresent ? "Present" : "Absent"}
-              callback={callback}
-              data-testid={`tac_col2_${field.name}`}
-            ></Dropdown>
-          </div>
-        </div>
-      ))}
+
+      <TwoColumnForm
+        callback={callback}
+        col1Header="Teacher Name"
+        col2Header="Attendance Status"
+        rowData={rowData}
+      ></TwoColumnForm>
     </div>
   );
 };

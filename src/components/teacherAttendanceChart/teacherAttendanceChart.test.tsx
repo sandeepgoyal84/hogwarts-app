@@ -72,12 +72,12 @@ describe("src/components/teacherAttendanceChart/teacherAttendanceChart", () => {
         container
       );
     });
-    expect(container.querySelectorAll('[data-testid^="tac_tr_"]').length).toBe(
+    expect(container.querySelectorAll('[data-testid^="twcf_tr_"]').length).toBe(
       2
     );
 
     expect(
-      container.querySelector('[data-testid="tac_col1_Professor Dumbledore"]')
+      container.querySelector('[data-testid="twcf_col1_Professor Dumbledore"]')
         .textContent
     ).toBe("Professor Dumbledore");
   });
@@ -117,7 +117,7 @@ describe("src/components/teacherAttendanceChart/teacherAttendanceChart", () => {
       );
     });
     const selectElement = document.querySelector(
-      '[data-testid="tac_col2_Professor Dumbledore"]'
+      '[data-testid="twcf_col2_Professor Dumbledore"]'
     );
 
     fireEvent.change(selectElement as Element, { target: { value: "Absent" } });
@@ -211,64 +211,64 @@ describe("src/components/teacherAttendanceChart/teacherAttendanceChart", () => {
     expect(pretty(container.innerHTML)).toMatchInlineSnapshot(`
       "<div style=\\"display: flex; flex-direction: column; flex-grow: 1;\\">
         <h2 data-testid=\\"tac_heading\\">Teacher Roaster</h2>
-        <div style=\\"margin: 10px; display: flex; justify-content: space-around;\\">
-          <div style=\\"flex-basis: 50%; font-weight: bolder;\\"><span>Teacher Name</span></div>
-          <div style=\\"flex-basis: 50%; font-weight: bolder;\\"><span>Attendance Status</span></div>
+        <div class=\\"headerRow\\">
+          <div class=\\"col\\"><span>Teacher Name</span></div>
+          <div class=\\"col\\"><span>Attendance Status</span></div>
         </div>
-        <div data-testid=\\"tac_tr_Professor Dumbledore\\" style=\\"margin: 10px; display: flex; justify-content: space-around;\\">
-          <div style=\\"flex-basis: 50%;\\"><span data-testid=\\"tac_col1_Professor Dumbledore\\">Professor Dumbledore</span></div>
-          <div style=\\"flex-basis: 50%;\\"><select name=\\"select\\" data-testid=\\"tac_col2_Professor Dumbledore\\">
-              <option data-testid=\\"option_tac_col2_Professor Dumbledore_Present\\" value=\\"Present\\" selected=\\"\\">Present</option>
-              <option data-testid=\\"option_tac_col2_Professor Dumbledore_Absent\\" value=\\"Absent\\">Absent</option>
+        <div data-testid=\\"twcf_tr_Professor Dumbledore\\" class=\\"row\\">
+          <div class=\\"col\\"><span data-testid=\\"twcf_col1_Professor Dumbledore\\">Professor Dumbledore</span></div>
+          <div class=\\"col\\"><select name=\\"select\\" data-testid=\\"twcf_col2_Professor Dumbledore\\">
+              <option data-testid=\\"option_twcf_col2_Professor Dumbledore_Present\\" value=\\"Present\\" selected=\\"\\">Present</option>
+              <option data-testid=\\"option_twcf_col2_Professor Dumbledore_Absent\\" value=\\"Absent\\">Absent</option>
             </select></div>
         </div>
-        <div data-testid=\\"tac_tr_Minerva McGonagall\\" style=\\"margin: 10px; display: flex; justify-content: space-around;\\">
-          <div style=\\"flex-basis: 50%;\\"><span data-testid=\\"tac_col1_Minerva McGonagall\\">Minerva McGonagall</span></div>
-          <div style=\\"flex-basis: 50%;\\"><select name=\\"select\\" data-testid=\\"tac_col2_Minerva McGonagall\\">
-              <option data-testid=\\"option_tac_col2_Minerva McGonagall_Present\\" value=\\"Present\\" selected=\\"\\">Present</option>
-              <option data-testid=\\"option_tac_col2_Minerva McGonagall_Absent\\" value=\\"Absent\\">Absent</option>
+        <div data-testid=\\"twcf_tr_Minerva McGonagall\\" class=\\"row\\">
+          <div class=\\"col\\"><span data-testid=\\"twcf_col1_Minerva McGonagall\\">Minerva McGonagall</span></div>
+          <div class=\\"col\\"><select name=\\"select\\" data-testid=\\"twcf_col2_Minerva McGonagall\\">
+              <option data-testid=\\"option_twcf_col2_Minerva McGonagall_Present\\" value=\\"Present\\" selected=\\"\\">Present</option>
+              <option data-testid=\\"option_twcf_col2_Minerva McGonagall_Absent\\" value=\\"Absent\\">Absent</option>
             </select></div>
         </div>
-        <div data-testid=\\"tac_tr_Rubeus Hagrid\\" style=\\"margin: 10px; display: flex; justify-content: space-around;\\">
-          <div style=\\"flex-basis: 50%;\\"><span data-testid=\\"tac_col1_Rubeus Hagrid\\">Rubeus Hagrid</span></div>
-          <div style=\\"flex-basis: 50%;\\"><select name=\\"select\\" data-testid=\\"tac_col2_Rubeus Hagrid\\">
-              <option data-testid=\\"option_tac_col2_Rubeus Hagrid_Present\\" value=\\"Present\\" selected=\\"\\">Present</option>
-              <option data-testid=\\"option_tac_col2_Rubeus Hagrid_Absent\\" value=\\"Absent\\">Absent</option>
+        <div data-testid=\\"twcf_tr_Rubeus Hagrid\\" class=\\"row\\">
+          <div class=\\"col\\"><span data-testid=\\"twcf_col1_Rubeus Hagrid\\">Rubeus Hagrid</span></div>
+          <div class=\\"col\\"><select name=\\"select\\" data-testid=\\"twcf_col2_Rubeus Hagrid\\">
+              <option data-testid=\\"option_twcf_col2_Rubeus Hagrid_Present\\" value=\\"Present\\" selected=\\"\\">Present</option>
+              <option data-testid=\\"option_twcf_col2_Rubeus Hagrid_Absent\\" value=\\"Absent\\">Absent</option>
             </select></div>
         </div>
-        <div data-testid=\\"tac_tr_Horace Slughorn\\" style=\\"margin: 10px; display: flex; justify-content: space-around;\\">
-          <div style=\\"flex-basis: 50%;\\"><span data-testid=\\"tac_col1_Horace Slughorn\\">Horace Slughorn</span></div>
-          <div style=\\"flex-basis: 50%;\\"><select name=\\"select\\" data-testid=\\"tac_col2_Horace Slughorn\\">
-              <option data-testid=\\"option_tac_col2_Horace Slughorn_Present\\" value=\\"Present\\" selected=\\"\\">Present</option>
-              <option data-testid=\\"option_tac_col2_Horace Slughorn_Absent\\" value=\\"Absent\\">Absent</option>
+        <div data-testid=\\"twcf_tr_Horace Slughorn\\" class=\\"row\\">
+          <div class=\\"col\\"><span data-testid=\\"twcf_col1_Horace Slughorn\\">Horace Slughorn</span></div>
+          <div class=\\"col\\"><select name=\\"select\\" data-testid=\\"twcf_col2_Horace Slughorn\\">
+              <option data-testid=\\"option_twcf_col2_Horace Slughorn_Present\\" value=\\"Present\\" selected=\\"\\">Present</option>
+              <option data-testid=\\"option_twcf_col2_Horace Slughorn_Absent\\" value=\\"Absent\\">Absent</option>
             </select></div>
         </div>
-        <div data-testid=\\"tac_tr_Severus Snape\\" style=\\"margin: 10px; display: flex; justify-content: space-around;\\">
-          <div style=\\"flex-basis: 50%;\\"><span data-testid=\\"tac_col1_Severus Snape\\">Severus Snape</span></div>
-          <div style=\\"flex-basis: 50%;\\"><select name=\\"select\\" data-testid=\\"tac_col2_Severus Snape\\">
-              <option data-testid=\\"option_tac_col2_Severus Snape_Present\\" value=\\"Present\\" selected=\\"\\">Present</option>
-              <option data-testid=\\"option_tac_col2_Severus Snape_Absent\\" value=\\"Absent\\">Absent</option>
+        <div data-testid=\\"twcf_tr_Severus Snape\\" class=\\"row\\">
+          <div class=\\"col\\"><span data-testid=\\"twcf_col1_Severus Snape\\">Severus Snape</span></div>
+          <div class=\\"col\\"><select name=\\"select\\" data-testid=\\"twcf_col2_Severus Snape\\">
+              <option data-testid=\\"option_twcf_col2_Severus Snape_Present\\" value=\\"Present\\" selected=\\"\\">Present</option>
+              <option data-testid=\\"option_twcf_col2_Severus Snape_Absent\\" value=\\"Absent\\">Absent</option>
             </select></div>
         </div>
-        <div data-testid=\\"tac_tr_Alastor Moody\\" style=\\"margin: 10px; display: flex; justify-content: space-around;\\">
-          <div style=\\"flex-basis: 50%;\\"><span data-testid=\\"tac_col1_Alastor Moody\\">Alastor Moody</span></div>
-          <div style=\\"flex-basis: 50%;\\"><select name=\\"select\\" data-testid=\\"tac_col2_Alastor Moody\\">
-              <option data-testid=\\"option_tac_col2_Alastor Moody_Present\\" value=\\"Present\\" selected=\\"\\">Present</option>
-              <option data-testid=\\"option_tac_col2_Alastor Moody_Absent\\" value=\\"Absent\\">Absent</option>
+        <div data-testid=\\"twcf_tr_Alastor Moody\\" class=\\"row\\">
+          <div class=\\"col\\"><span data-testid=\\"twcf_col1_Alastor Moody\\">Alastor Moody</span></div>
+          <div class=\\"col\\"><select name=\\"select\\" data-testid=\\"twcf_col2_Alastor Moody\\">
+              <option data-testid=\\"option_twcf_col2_Alastor Moody_Present\\" value=\\"Present\\" selected=\\"\\">Present</option>
+              <option data-testid=\\"option_twcf_col2_Alastor Moody_Absent\\" value=\\"Absent\\">Absent</option>
             </select></div>
         </div>
-        <div data-testid=\\"tac_tr_Remus Lupin\\" style=\\"margin: 10px; display: flex; justify-content: space-around;\\">
-          <div style=\\"flex-basis: 50%;\\"><span data-testid=\\"tac_col1_Remus Lupin\\">Remus Lupin</span></div>
-          <div style=\\"flex-basis: 50%;\\"><select name=\\"select\\" data-testid=\\"tac_col2_Remus Lupin\\">
-              <option data-testid=\\"option_tac_col2_Remus Lupin_Present\\" value=\\"Present\\" selected=\\"\\">Present</option>
-              <option data-testid=\\"option_tac_col2_Remus Lupin_Absent\\" value=\\"Absent\\">Absent</option>
+        <div data-testid=\\"twcf_tr_Remus Lupin\\" class=\\"row\\">
+          <div class=\\"col\\"><span data-testid=\\"twcf_col1_Remus Lupin\\">Remus Lupin</span></div>
+          <div class=\\"col\\"><select name=\\"select\\" data-testid=\\"twcf_col2_Remus Lupin\\">
+              <option data-testid=\\"option_twcf_col2_Remus Lupin_Present\\" value=\\"Present\\" selected=\\"\\">Present</option>
+              <option data-testid=\\"option_twcf_col2_Remus Lupin_Absent\\" value=\\"Absent\\">Absent</option>
             </select></div>
         </div>
-        <div data-testid=\\"tac_tr_Gilderoy Lockhart\\" style=\\"margin: 10px; display: flex; justify-content: space-around;\\">
-          <div style=\\"flex-basis: 50%;\\"><span data-testid=\\"tac_col1_Gilderoy Lockhart\\">Gilderoy Lockhart</span></div>
-          <div style=\\"flex-basis: 50%;\\"><select name=\\"select\\" data-testid=\\"tac_col2_Gilderoy Lockhart\\">
-              <option data-testid=\\"option_tac_col2_Gilderoy Lockhart_Present\\" value=\\"Present\\" selected=\\"\\">Present</option>
-              <option data-testid=\\"option_tac_col2_Gilderoy Lockhart_Absent\\" value=\\"Absent\\">Absent</option>
+        <div data-testid=\\"twcf_tr_Gilderoy Lockhart\\" class=\\"row\\">
+          <div class=\\"col\\"><span data-testid=\\"twcf_col1_Gilderoy Lockhart\\">Gilderoy Lockhart</span></div>
+          <div class=\\"col\\"><select name=\\"select\\" data-testid=\\"twcf_col2_Gilderoy Lockhart\\">
+              <option data-testid=\\"option_twcf_col2_Gilderoy Lockhart_Present\\" value=\\"Present\\" selected=\\"\\">Present</option>
+              <option data-testid=\\"option_twcf_col2_Gilderoy Lockhart_Absent\\" value=\\"Absent\\">Absent</option>
             </select></div>
         </div>
       </div>"

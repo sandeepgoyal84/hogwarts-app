@@ -24,5 +24,20 @@ export type ThreeColumnFormTy = {
   col1Header: string;
   col2Header: string;
   col3Header: string;
-  rowData: ReadonlyArray<ThreeColumnFormRowTy>;
+  rowData: Array<ThreeColumnFormRowTy>;
+};
+
+export type TwoColumnFormRowTy = {
+  col1Value: string;
+  col2Value: {
+    options: { key: string; value: string; isSelected: boolean }[];
+    selectedItem: string;
+  };
+};
+
+export type TwoColumnFormTy = {
+  callback: (id: string, val: string) => void;
+  col1Header: string;
+  col2Header: string;
+  rowData: Array<TwoColumnFormRowTy>;
 };

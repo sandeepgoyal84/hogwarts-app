@@ -3,7 +3,10 @@ import React, { useState } from "react";
 const Dropdown = (props: {
   identifier: string;
   selectedItem: string;
-  optionList: ReadonlyArray<{ key: string; value: string }>;
+  optionList: ReadonlyArray<{
+    key: string;
+    value: string;
+  }>;
   callback: (identifier: string, value: string) => void;
   "data-testid"?: string;
 }) => {
@@ -23,7 +26,11 @@ const Dropdown = (props: {
     >
       {optionList.map((n) => {
         return (
-          <option data-testid={`option_${props["data-testid"]}_${n.key}`} value={n.key} key={n.key}>
+          <option
+            data-testid={`option_${props["data-testid"]}_${n.key}`}
+            value={n.key}
+            key={n.key}
+          >
             {n.value}
           </option>
         );

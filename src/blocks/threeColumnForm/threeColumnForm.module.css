@@ -1,0 +1,15 @@
+.row {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+}
+.headerRow {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+  font-weight: bolder;
+}
+
+.col {
+  flex-basis: 33%;
+}

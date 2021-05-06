@@ -73,9 +73,9 @@ describe("src/modules/todayRoaster/todayRoaster", () => {
       </Provider>
     );
     // check number of dropdowns should be same as provided no of rows
-    expect(screen.getAllByTestId(/^tac_tr_/i).length).toBe(8);
+    expect(screen.getAllByTestId(/^twcf_tr_/i).length).toBe(8);
 
-    const selectElement = screen.getByTestId("tac_col2_Severus Snape");
+    const selectElement = screen.getByTestId("twcf_col2_Severus Snape");
     // change teacher status from Present to Absent
     fireEvent.change(selectElement, { target: { value: "Absent" } });
     expect(teacherRoasterSagaSpy).toBeCalledWith({
@@ -83,7 +83,7 @@ describe("src/modules/todayRoaster/todayRoaster", () => {
       name: "Severus Snape",
       isPresent: false,
     });
-    // expect(screen.getAllByTestId("tcfr_col3")[6].textContent).toBe("Rubeus Hagrid");
+    // expect(screen.getAllByTestId("thcf_col3")[6].textContent).toBe("Rubeus Hagrid");
 
     // change teacher status from Absent to Present
     fireEvent.change(selectElement, { target: { value: "Present" } });
@@ -92,7 +92,7 @@ describe("src/modules/todayRoaster/todayRoaster", () => {
       name: "Severus Snape",
       isPresent: true,
     });
-    expect(screen.getByTestId("tcfr_col3_Luna Lovegood").textContent).toBe(
+    expect(screen.getByTestId("thcf_col3_Luna Lovegood").textContent).toBe(
       "Severus Snape"
     );
     teacherRoasterSagaSpy.mockClear();

@@ -67,9 +67,9 @@ describe("src/modules/teacherRoaster/teacherRoaster", () => {
       </Provider>
     );
     // check number of dropdowns should be same as provided no of rows
-    expect(screen.getAllByTestId(/^tac_tr_/i).length).toBe(8);
+    expect(screen.getAllByTestId(/^twcf_tr_/i).length).toBe(8);
 
-    const selectElement = screen.getByTestId("tac_col2_Professor Dumbledore");
+    const selectElement = screen.getByTestId("twcf_col2_Professor Dumbledore");
     // change teacher status from Present to Absent
     fireEvent.change(selectElement, { target: { value: "Absent" } });
     expect(teacherRoasterSagaSpy).toBeCalledWith({

@@ -60,6 +60,6 @@ describe("src/modules/studentRoaster/studentRoaster", () => {
       </Provider>
     );
     // check number of student should be same as provided no of rows
-    expect(screen.getAllByTestId(/^tcfr_tr_/i).length).toBe(6);
+    expect(screen.getAllByTestId(/^thcf_tr_/i).length).toBe(6);
   });
 });

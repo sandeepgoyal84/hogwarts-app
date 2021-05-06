@@ -1,33 +1,40 @@
-import * as React from "react";
-import ThreeColumnFormRow from "../threeColumnFormRow/threeColumnFormRow";
 import { ThreeColumnFormTy } from "src/types";
+import Label from "src/atoms/label/label";
+import styles from "./threeColumnForm.module.css";
+
 const ThreeColumnForm = (props: ThreeColumnFormTy) => {
   const { col1Header, col2Header, col3Header, rowData } = props;
 
   const getContent = () => {
-    return rowData.map((field) => (
-      <ThreeColumnFormRow
-        key={field.col1Value}
-        col1Value={field.col1Value}
-        col2Value={field.col2Value}
-        col3Value={field.col3Value}
-      ></ThreeColumnFormRow>
+    return rowData.map((i) => (
+      <div data-testid={`thcf_tr_${i.col1Value}`} className={styles.row}>
+        <div className={styles.col}>
+          <Label data-testid={`thcf_col1_${i.col1Value}`}>{i.col1Value}</Label>
+        </div>
+        <div className={styles.col}>
+          <Label>{i.col2Value}</Label>
+        </div>
+        <div className={styles.col}>
+          <Label data-testid={`thcf_col3_${i.col1Value}`}>{i.col3Value}</Label>
+        </div>
+      </div>
     ));
   };
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        flexGrow: 1,
-      }}
-    >
-      <ThreeColumnFormRow
-        col1Value={col1Header}
-        col2Value={col2Header}
-        col3Value={col3Header}
-        isHeader
-      ></ThreeColumnFormRow>
+    <div >
+      <div
+        data-testid={`thcf_th_${col1Header}`} className={styles.headerRow}
+      >
+        <div className={styles.col}>
+          <Label data-testid={`thcf_col1_${col1Header}`}>{col1Header}</Label>
+        </div>
+        <div className={styles.col}>
+          <Label>{col2Header}</Label>
+        </div>
+        <div className={styles.col}>
+          <Label data-testid={`thcf_col3_${col1Header}`}>{col3Header}</Label>
+        </div>
+      </div>
       {getContent()}
     </div>
   );

@@ -6,10 +6,6 @@ import * as actions from "./teacherRoasterSagaActions";
 import TeacherAttendanceChart from "src/components/teacherAttendanceChart/teacherAttendanceChart";
 
 const TeacherRoaster = () => {
-  const getOptions = () => [
-    { key: "Present", value: "Present" },
-    { key: "Absent", value: "Absent" },
-  ];
 
   const attendanceData = _.sortBy(useAppSelector(selector.selectTeachers), [
     "level",
@@ -30,7 +26,6 @@ const TeacherRoaster = () => {
     <TeacherAttendanceChart
       attendanceData={attendanceData}
       callback={callback}
-      getOptions={getOptions()}
     ></TeacherAttendanceChart>
   );
 };
