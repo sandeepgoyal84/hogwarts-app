@@ -5,7 +5,7 @@ export function fetchStudentRoasterApi() {
   return new Promise((resolve, rejected) =>
     setTimeout(() => {
       return resolve({ data: dummyData as ReadonlyArray<Student> });
-    }, 1000)
+    }, 500)
   )
     .then((result: any) => {
       return { response: result.data };
