@@ -19,7 +19,7 @@ const TeacherAttendanceChart = (props: Props) => {
         flexGrow: 1,
       }}
     >
-      <Heading data-testid="tac_lbl_heading" type="secondary">
+      <Heading data-testid="tac_heading" type="secondary">
         Teacher Roaster
       </Heading>
       <div
@@ -38,6 +38,7 @@ const TeacherAttendanceChart = (props: Props) => {
       </div>
       {attendanceData.map((field) => (
         <div
+          data-testid={`tac_tr_${field.name}`}
           style={{
             margin: "10px",
             display: "flex",
@@ -46,7 +47,7 @@ const TeacherAttendanceChart = (props: Props) => {
           key={field.name}
         >
           <div style={{ flexBasis: "50%" }}>
-            <Label data-testid="tac_lbl_teacher_name">{field.name}</Label>
+            <Label data-testid={`tac_col1_${field.name}`}>{field.name}</Label>
           </div>
           <div style={{ flexBasis: "50%" }}>
             <Dropdown
@@ -54,7 +55,7 @@ const TeacherAttendanceChart = (props: Props) => {
               optionList={getOptions}
               selectedItem={field.isPresent ? "Present" : "Absent"}
               callback={callback}
-              data-testid="tac_ddw_attendance_status"
+              data-testid={`tac_col2_${field.name}`}
             ></Dropdown>
           </div>
         </div>

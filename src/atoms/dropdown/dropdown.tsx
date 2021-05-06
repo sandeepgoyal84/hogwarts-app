@@ -23,7 +23,7 @@ const Dropdown = (props: {
     >
       {optionList.map((n) => {
         return (
-          <option value={n.key} key={n.key}>
+          <option data-testid={`option_${props["data-testid"]}_${n.key}`} value={n.key} key={n.key}>
             {n.value}
           </option>
         );

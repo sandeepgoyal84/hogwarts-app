@@ -4,9 +4,11 @@ import { ThreeColumnFormRowTy } from "src/types";
 
 const ThreeColumnFormRow = (props: ThreeColumnFormRowTy) => {
   const { col1Value, col2Value, col3Value, isHeader } = props;
+  const prefix = isHeader ? "th" : "tr";
 
   return (
     <div
+      data-testid={`tcfr_${prefix}_${col1Value}`}
       style={{
         display: "flex",
         justifyContent: "space-around",
@@ -16,17 +18,17 @@ const ThreeColumnFormRow = (props: ThreeColumnFormRowTy) => {
       <div
         style={{ flexBasis: "35%", fontWeight: isHeader ? "bolder" : "normal" }}
       >
-        <Label data-testid="tcfr_col1">{col1Value}</Label>
+        <Label data-testid={`tcfr_col1_${col1Value}`}>{col1Value}</Label>
       </div>
       <div
         style={{ flexBasis: "35%", fontWeight: isHeader ? "bolder" : "normal" }}
       >
-        <Label data-testid="tcfr_col2">{col2Value}</Label>
+        <Label>{col2Value}</Label>
       </div>
       <div
         style={{ flexBasis: "30%", fontWeight: isHeader ? "bolder" : "normal" }}
       >
-        <Label data-testid="tcfr_col3">{col3Value}</Label>
+        <Label data-testid={`tcfr_col3_${col1Value}`}>{col3Value}</Label>
       </div>
     </div>
   );

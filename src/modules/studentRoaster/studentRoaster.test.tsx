@@ -48,10 +48,9 @@ describe("src/modules/studentRoaster/studentRoaster", () => {
         <StudentRoaster />
       </Provider>
     );
-    expect(screen.getByTestId("ssc_lbl_heading").textContent).toBe(
+    expect(screen.getByTestId("ssc_heading").textContent).toBe(
       "Student Roaster"
     );
-    expect(screen.getAllByTestId("ssc_lbl_heading").length).toBe(1);
   });
 
   it("verify number of rows", () => {
@@ -61,6 +60,6 @@ describe("src/modules/studentRoaster/studentRoaster", () => {
       </Provider>
     );
     // check number of student should be same as provided no of rows
-    expect(screen.getAllByTestId("tcfr_col1").length).toBe(7);
+    expect(screen.getAllByTestId(/^tcfr_tr_/i).length).toBe(6);
   });
 });

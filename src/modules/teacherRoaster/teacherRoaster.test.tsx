@@ -52,10 +52,10 @@ describe("src/modules/teacherRoaster/teacherRoaster", () => {
         <TeacherRoaster />
       </Provider>
     );
-    expect(screen.getByTestId("tac_lbl_heading").textContent).toBe(
+    expect(screen.getByTestId("tac_heading").textContent).toBe(
       "Teacher Roaster"
     );
-    expect(screen.getAllByTestId("tac_lbl_heading").length).toBe(1);
+    expect(screen.getAllByTestId("tac_heading").length).toBe(1);
   });
 
   it("changing dropdown should be reflected", () => {
@@ -67,9 +67,9 @@ describe("src/modules/teacherRoaster/teacherRoaster", () => {
       </Provider>
     );
     // check number of dropdowns should be same as provided no of rows
-    expect(screen.getAllByTestId("tac_ddw_attendance_status").length).toBe(8);
+    expect(screen.getAllByTestId(/^tac_tr_/i).length).toBe(8);
 
-    const selectElement = screen.getAllByTestId("tac_ddw_attendance_status")[0];
+    const selectElement = screen.getByTestId("tac_col2_Professor Dumbledore");
     // change teacher status from Present to Absent
     fireEvent.change(selectElement, { target: { value: "Absent" } });
     expect(teacherRoasterSagaSpy).toBeCalledWith({

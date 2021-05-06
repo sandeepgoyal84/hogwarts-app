@@ -49,21 +49,19 @@ describe("src/modules/todayRoaster/todayRoaster", () => {
     fetchStudents.mockClear();
   });
 
-  it("it should renders Headiing for both teacher and student modules", () => {
+  it("it should renders only 1 Headiing for both teacher and student modules", () => {
     render(
       <Provider store={store}>
         <TodayRoaster />
       </Provider>
     );
-    expect(screen.getByTestId("tac_lbl_heading").textContent).toBe(
+    expect(screen.getByTestId("tac_heading").textContent).toBe(
       "Teacher Roaster"
     );
-    expect(screen.getAllByTestId("tac_lbl_heading").length).toBe(1);
-    
-    expect(screen.getByTestId("ssc_lbl_heading").textContent).toBe(
-        "Student Roaster"
-      );
-      expect(screen.getAllByTestId("ssc_lbl_heading").length).toBe(1);
+
+    expect(screen.getByTestId("ssc_heading").textContent).toBe(
+      "Student Roaster"
+    );
   });
 
   it("changing dropdown should be reflected in both modules", () => {
@@ -75,9 +73,9 @@ describe("src/modules/todayRoaster/todayRoaster", () => {
       </Provider>
     );
     // check number of dropdowns should be same as provided no of rows
-    expect(screen.getAllByTestId("tac_ddw_attendance_status").length).toBe(8);
+    expect(screen.getAllByTestId(/^tac_tr_/i).length).toBe(8);
 
-    const selectElement = screen.getAllByTestId("tac_ddw_attendance_status")[7];
+    const selectElement = screen.getByTestId("tac_col2_Severus Snape");
     // change teacher status from Present to Absent
     fireEvent.change(selectElement, { target: { value: "Absent" } });
     expect(teacherRoasterSagaSpy).toBeCalledWith({
@@ -94,7 +92,9 @@ describe("src/modules/todayRoaster/todayRoaster", () => {
       name: "Severus Snape",
       isPresent: true,
     });
-    expect(screen.getAllByTestId("tcfr_col3")[6].textContent).toBe("Severus Snape");
+    expect(screen.getByTestId("tcfr_col3_Luna Lovegood").textContent).toBe(
+      "Severus Snape"
+    );
     teacherRoasterSagaSpy.mockClear();
   });
 });

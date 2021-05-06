@@ -35,7 +35,7 @@ describe("src/components/studentSubjectChart/studentSubjectChart", () => {
       );
     });
     expect(
-      container.querySelector('[data-testid="ssc_lbl_heading"]').textContent
+      container.querySelector('[data-testid="ssc_heading"]').textContent
     ).toBe("test");
   });
 
@@ -65,24 +65,15 @@ describe("src/components/studentSubjectChart/studentSubjectChart", () => {
         container
       );
     });
-    expect(container.querySelectorAll('[data-testid="tcfr_col1"]').length).toBe(
-      2
-    );
-    expect(container.querySelectorAll('[data-testid="tcfr_col2"]').length).toBe(
-      2
-    );
-    expect(container.querySelectorAll('[data-testid="tcfr_col3"]').length).toBe(
-      2
+    expect(container.querySelectorAll('[data-testid^="tcfr_tr"]').length).toBe(
+      1
     );
 
     expect(
-      container.querySelectorAll('[data-testid="tcfr_col1"]')[0].textContent
+      container.querySelector('[data-testid="tcfr_col1_col1"]').textContent
     ).toBe("col1");
     expect(
-      container.querySelectorAll('[data-testid="tcfr_col2"]')[0].textContent
-    ).toBe("col2");
-    expect(
-      container.querySelectorAll('[data-testid="tcfr_col3"]')[0].textContent
+      container.querySelector('[data-testid="tcfr_col3_col1"]').textContent
     ).toBe("col3");
   });
 
@@ -139,42 +130,42 @@ describe("src/components/studentSubjectChart/studentSubjectChart", () => {
     });
     expect(pretty(container.innerHTML)).toMatchInlineSnapshot(`
       "<div style=\\"display: flex; flex-direction: column;\\">
-        <h2 data-testid=\\"ssc_lbl_heading\\">test</h2>
+        <h2 data-testid=\\"ssc_heading\\">test</h2>
         <div style=\\"display: flex; flex-direction: column; flex-grow: 1;\\">
-          <div style=\\"display: flex; justify-content: space-around; margin: 10px;\\">
-            <div style=\\"flex-basis: 35%; font-weight: bolder;\\"><span data-testid=\\"tcfr_col1\\">col1</span></div>
-            <div style=\\"flex-basis: 35%; font-weight: bolder;\\"><span data-testid=\\"tcfr_col2\\">col2</span></div>
-            <div style=\\"flex-basis: 30%; font-weight: bolder;\\"><span data-testid=\\"tcfr_col3\\">col3</span></div>
+          <div data-testid=\\"tcfr_th_col1\\" style=\\"display: flex; justify-content: space-around; margin: 10px;\\">
+            <div style=\\"flex-basis: 35%; font-weight: bolder;\\"><span data-testid=\\"tcfr_col1_col1\\">col1</span></div>
+            <div style=\\"flex-basis: 35%; font-weight: bolder;\\"><span>col2</span></div>
+            <div style=\\"flex-basis: 30%; font-weight: bolder;\\"><span data-testid=\\"tcfr_col3_col1\\">col3</span></div>
           </div>
-          <div style=\\"display: flex; justify-content: space-around; margin: 10px;\\">
-            <div style=\\"flex-basis: 35%; font-weight: normal;\\"><span data-testid=\\"tcfr_col1\\">Harry Potter</span></div>
-            <div style=\\"flex-basis: 35%; font-weight: normal;\\"><span data-testid=\\"tcfr_col2\\">Potions Master</span></div>
-            <div style=\\"flex-basis: 30%; font-weight: normal;\\"><span data-testid=\\"tcfr_col3\\">Horace Slughorn</span></div>
+          <div data-testid=\\"tcfr_tr_Harry Potter\\" style=\\"display: flex; justify-content: space-around; margin: 10px;\\">
+            <div style=\\"flex-basis: 35%; font-weight: normal;\\"><span data-testid=\\"tcfr_col1_Harry Potter\\">Harry Potter</span></div>
+            <div style=\\"flex-basis: 35%; font-weight: normal;\\"><span>Potions Master</span></div>
+            <div style=\\"flex-basis: 30%; font-weight: normal;\\"><span data-testid=\\"tcfr_col3_Harry Potter\\">Horace Slughorn</span></div>
           </div>
-          <div style=\\"display: flex; justify-content: space-around; margin: 10px;\\">
-            <div style=\\"flex-basis: 35%; font-weight: normal;\\"><span data-testid=\\"tcfr_col1\\">Hermione Granger</span></div>
-            <div style=\\"flex-basis: 35%; font-weight: normal;\\"><span data-testid=\\"tcfr_col2\\">Potions Master</span></div>
-            <div style=\\"flex-basis: 30%; font-weight: normal;\\"><span data-testid=\\"tcfr_col3\\"></span></div>
+          <div data-testid=\\"tcfr_tr_Hermione Granger\\" style=\\"display: flex; justify-content: space-around; margin: 10px;\\">
+            <div style=\\"flex-basis: 35%; font-weight: normal;\\"><span data-testid=\\"tcfr_col1_Hermione Granger\\">Hermione Granger</span></div>
+            <div style=\\"flex-basis: 35%; font-weight: normal;\\"><span>Potions Master</span></div>
+            <div style=\\"flex-basis: 30%; font-weight: normal;\\"><span data-testid=\\"tcfr_col3_Hermione Granger\\"></span></div>
           </div>
-          <div style=\\"display: flex; justify-content: space-around; margin: 10px;\\">
-            <div style=\\"flex-basis: 35%; font-weight: normal;\\"><span data-testid=\\"tcfr_col1\\">Ron Weasley</span></div>
-            <div style=\\"flex-basis: 35%; font-weight: normal;\\"><span data-testid=\\"tcfr_col2\\">Potions Master</span></div>
-            <div style=\\"flex-basis: 30%; font-weight: normal;\\"><span data-testid=\\"tcfr_col3\\">Severus Snape</span></div>
+          <div data-testid=\\"tcfr_tr_Ron Weasley\\" style=\\"display: flex; justify-content: space-around; margin: 10px;\\">
+            <div style=\\"flex-basis: 35%; font-weight: normal;\\"><span data-testid=\\"tcfr_col1_Ron Weasley\\">Ron Weasley</span></div>
+            <div style=\\"flex-basis: 35%; font-weight: normal;\\"><span>Potions Master</span></div>
+            <div style=\\"flex-basis: 30%; font-weight: normal;\\"><span data-testid=\\"tcfr_col3_Ron Weasley\\">Severus Snape</span></div>
           </div>
-          <div style=\\"display: flex; justify-content: space-around; margin: 10px;\\">
-            <div style=\\"flex-basis: 35%; font-weight: normal;\\"><span data-testid=\\"tcfr_col1\\">Draco Malfoy</span></div>
-            <div style=\\"flex-basis: 35%; font-weight: normal;\\"><span data-testid=\\"tcfr_col2\\">Potions Master</span></div>
-            <div style=\\"flex-basis: 30%; font-weight: normal;\\"><span data-testid=\\"tcfr_col3\\">Horace Slughorn</span></div>
+          <div data-testid=\\"tcfr_tr_Draco Malfoy\\" style=\\"display: flex; justify-content: space-around; margin: 10px;\\">
+            <div style=\\"flex-basis: 35%; font-weight: normal;\\"><span data-testid=\\"tcfr_col1_Draco Malfoy\\">Draco Malfoy</span></div>
+            <div style=\\"flex-basis: 35%; font-weight: normal;\\"><span>Potions Master</span></div>
+            <div style=\\"flex-basis: 30%; font-weight: normal;\\"><span data-testid=\\"tcfr_col3_Draco Malfoy\\">Horace Slughorn</span></div>
           </div>
-          <div style=\\"display: flex; justify-content: space-around; margin: 10px;\\">
-            <div style=\\"flex-basis: 35%; font-weight: normal;\\"><span data-testid=\\"tcfr_col1\\">Padma Patil</span></div>
-            <div style=\\"flex-basis: 35%; font-weight: normal;\\"><span data-testid=\\"tcfr_col2\\">Potions Master</span></div>
-            <div style=\\"flex-basis: 30%; font-weight: normal;\\"><span data-testid=\\"tcfr_col3\\"></span></div>
+          <div data-testid=\\"tcfr_tr_Padma Patil\\" style=\\"display: flex; justify-content: space-around; margin: 10px;\\">
+            <div style=\\"flex-basis: 35%; font-weight: normal;\\"><span data-testid=\\"tcfr_col1_Padma Patil\\">Padma Patil</span></div>
+            <div style=\\"flex-basis: 35%; font-weight: normal;\\"><span>Potions Master</span></div>
+            <div style=\\"flex-basis: 30%; font-weight: normal;\\"><span data-testid=\\"tcfr_col3_Padma Patil\\"></span></div>
           </div>
-          <div style=\\"display: flex; justify-content: space-around; margin: 10px;\\">
-            <div style=\\"flex-basis: 35%; font-weight: normal;\\"><span data-testid=\\"tcfr_col1\\">Luna Lovegood</span></div>
-            <div style=\\"flex-basis: 35%; font-weight: normal;\\"><span data-testid=\\"tcfr_col2\\">Potions Master</span></div>
-            <div style=\\"flex-basis: 30%; font-weight: normal;\\"><span data-testid=\\"tcfr_col3\\">Severus Snape</span></div>
+          <div data-testid=\\"tcfr_tr_Luna Lovegood\\" style=\\"display: flex; justify-content: space-around; margin: 10px;\\">
+            <div style=\\"flex-basis: 35%; font-weight: normal;\\"><span data-testid=\\"tcfr_col1_Luna Lovegood\\">Luna Lovegood</span></div>
+            <div style=\\"flex-basis: 35%; font-weight: normal;\\"><span>Potions Master</span></div>
+            <div style=\\"flex-basis: 30%; font-weight: normal;\\"><span data-testid=\\"tcfr_col3_Luna Lovegood\\">Severus Snape</span></div>
           </div>
         </div>
       </div>"

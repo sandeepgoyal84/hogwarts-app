@@ -13,7 +13,7 @@ const StudentSubjectChart = (props: Props) => {
   const { title, rowData, col1Header, col2Header, col3Header } = props;
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
-      <Heading data-testid="ssc_lbl_heading" type="secondary">
+      <Heading data-testid="ssc_heading" type="secondary">
         {title}
       </Heading>
       <ThreeColumnForm
