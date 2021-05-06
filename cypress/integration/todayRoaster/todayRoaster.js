@@ -22,5 +22,5 @@ When('Mark professors {string} and {string} as absent', (teacher, headTeacher) =
 });
 
 Then('Now student {string} should have {string} as assigned teacher', { timeout: 90000 }, (student, teacher) => {
-    cy.get(`[data-testid="tcfr_col3_${student}"]`).should('contain.text', teacher);
+    cy.get(`[data-testid="thcf_col3_${student}"]`).should('contain.text', teacher);
 });
